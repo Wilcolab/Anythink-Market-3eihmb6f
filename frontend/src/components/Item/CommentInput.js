@@ -8,7 +8,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const CommentInput = ({ slug, onSubmit, currentUser }) => {
-  const [body, setBody] = useState();
+  const [body, setBody] = useState("");
 
   const createComment = async (ev) => {
     ev.preventDefault();
@@ -27,7 +27,7 @@ const CommentInput = ({ slug, onSubmit, currentUser }) => {
           className="form-control"
           placeholder="Write a comment..."
           value={body}
-          onChange={setBody}
+          onChange={e => setBody(e.target.value)}
           rows="3"
         ></textarea>
       </div>
@@ -43,6 +43,8 @@ const CommentInput = ({ slug, onSubmit, currentUser }) => {
       </div>
     </form>
   );
-}
+};
+
+
 
 export default connect(() => ({}), mapDispatchToProps)(CommentInput);
